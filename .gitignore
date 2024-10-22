@@ -1,0 +1,85 @@
+# Python-related files
+__pycache__/
+*.py[cod]
+*.so
+*.pyo
+
+# Virtual environment
+env/
+venv/
+.venv/
+
+# Jupyter Notebooks checkpoints
+.ipynb_checkpoints/
+
+# Colab-related files
+.colab/
+*.ipynb_*
+drive/
+colab-backup/
+
+# Model files (-> maybe just add finial results?) TODO
+*.h5
+*.ckpt
+*.pt
+*.pth
+*.onnx
+
+# Dataset files
+*.fasta
+*.csv
+*.tsv
+*.json
+*.pkl
+*.npy
+*.pickle
+*.gz
+*.zip
+*.tar.gz
+
+# Logs and outputs
+*.log
+*.out
+*.err
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# LaTeX-related files
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.toc
+*.synctex.gz
+
+# TexShop specific
+*.pdfsync
+*.synctex.gz
+*.synctex
+
+# LaTeX intermediate files and PDFs
+*.pdf
+*.xdv
+*.lof
+*.lot
+*.lol
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*.bak
+
+# Build directories
+build/
+dist/
+*.egg-info/
+.eggs/

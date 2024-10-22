@@ -1,0 +1,6 @@
+[submodule "libs/MTDP"]
+	path = libs/MTDP
+	url = https://github.com/KennthShang/MTDP.git
+[submodule "libs/LoRAPrune"]
+	path = libs/LoRAPrune
+	url = https://github.com/aim-uofa/LoRAPrune.git
