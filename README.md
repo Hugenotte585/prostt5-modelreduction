@@ -19,4 +19,5 @@ To clone this repository and include the submodules (e.g., MTDP and LoRAPrune), 
 
 ```bash
 git clone --recursive https://gitlab.lrz.de/ge56naf/prostt5-modelreduction.git
+bash setup.sh
 ````
