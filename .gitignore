@@ -83,3 +83,6 @@ build/
 dist/
 *.egg-info/
 .eggs/
+
+# Libraries
+libs/** 

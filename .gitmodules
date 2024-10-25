@@ -4,3 +4,6 @@
 [submodule "libs/LoRAPrune"]
 	path = libs/LoRAPrune
 	url = https://github.com/aim-uofa/LoRAPrune.git
+[submodule "libs/ProstT5"]
+	path = libs/ProstT5
+	url = https://github.com/mheinzinger/ProstT5.git
