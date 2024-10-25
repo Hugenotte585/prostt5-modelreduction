@@ -185,5 +185,5 @@ fi
 
 if [ "$install_lora" = true ]; then setup_lora_env; fi
 if [ "$install_mtdp" = true ]; then setup_mtdp_env; fi
-if [ "$install_foldseek" = true ]; then setup_foldseek_env; fi # line 188
+if [ "$install_foldseek" = true ]; then setup_foldseek_env; fi
 if [ "$install_prostt5" = true ]; then setup_prostt5_env; fi
