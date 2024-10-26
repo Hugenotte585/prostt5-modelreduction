@@ -1,7 +1,7 @@
 # Project Links and Ressources
 
 ## Links to shared google docs
-  - [Google presentation](https://docs.google.com/presentation/d/1l5or07R7Ykie0W7T2lPz9sEE4oakJ0EOol0LFRPuVCg/edit?usp=sharing)
+  - [Google presentation](https://docs.google.com/presentation/d/1Bwc9On86ZoSQP0W20FvHAJUsdXqiDns-a1QarRzeshQ/edit?usp=sharing)
   - [Google doc](https://docs.google.com/document/d/1JhDzgg5surFd3QiaCaU62x10-LN7A8ZGefI5bP5rT7A/edit?usp=sharing)
 
 ## ProstT5
