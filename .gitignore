@@ -36,6 +36,7 @@ colab-backup/
 *.gz
 *.zip
 *.tar.gz
+*.pdb
 
 # Logs and outputs
 *.log
@@ -86,3 +87,6 @@ dist/
 
 # Libraries
 libs/** 
+
+# Foldseek files
+queryDB*
