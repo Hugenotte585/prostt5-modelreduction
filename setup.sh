@@ -6,12 +6,12 @@ update_rc=false
 rc_file=~/.bashrc
 
 test_conda() {
-    eval "$(conda shell.bash hook)" # fixes a bug where conda isn't initialized in the shell
-
     if ! command -v conda &> /dev/null; then
         echo "Conda could not be found. Please install Conda."
         exit 1
     fi
+
+    eval "$(conda shell.bash hook)" # fixes a bug where conda isn't initialized in the shell
 }
 
 setup_lora_env() {
