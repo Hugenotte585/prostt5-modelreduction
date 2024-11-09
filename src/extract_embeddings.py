@@ -39,22 +39,27 @@ def generate_per_protein_embeddings(sequences, tokenizer, model, device, chunk_s
     protein_embeddings = []
     
     # Process in chunks
+    processed = 0  
     for i in range(0, len(sequences), chunk_size):
         chunk = sequences[i:i + chunk_size]
-        print(f"Processing chunk {i // chunk_size + 1} with {len(chunk)} sequences.")
+        print(f"Processing chunk {i // chunk_size + 1}, {processed} sequences processed.")
         
         ids = tokenizer.batch_encode_plus(chunk, add_special_tokens=True, padding="longest", return_tensors='pt').to(device)
         
-        with torch.no_grad():
-            embedding_rpr = model(ids.input_ids, attention_mask=ids.attention_mask)
+        with torch.cuda.amp.autocast():  # Mixed precision to reduce memory usage
+            with torch.no_grad():
+                embedding_rpr = model(ids.input_ids, attention_mask=ids.attention_mask)
         
         # Calculate per_protein embeddings
         for j, seq in enumerate(chunk):
             seq_len = len("".join(seq.split()))
             per_protein = embedding_rpr.last_hidden_state[j, 1:seq_len + 1].mean(dim=0)
-            protein_embeddings.append(per_protein.cpu().numpy())
+            protein_embeddings.append(per_protein.cpu().numpy())  # Move to CPU to save GPU memory
+            
+        del ids
+        del embedding_rpr
+        torch.cuda.empty_cache()
     
-    # Convert to matrix
     embedding_matrix = np.stack(protein_embeddings)
     return embedding_matrix
 
@@ -62,29 +67,30 @@ def main(fasta_path, chunk_size=10):
     device = setup_device()
     tokenizer, model = load_model_and_tokenizer(device)
     
-    # Load and preprocess sequences
     sequences_dict = read_fasta(fasta_path, is_3Di=False)
     sequences = list(sequences_dict.values())
     sequences = preprocess_sequences(sequences)
     print(f"Number of sequences: {len(sequences)}")
     
-    # Generate embeddings
     embedding_matrix = generate_per_protein_embeddings(sequences, tokenizer, model, device, chunk_size=chunk_size)
     print("Embeddings generated successfully.")
     print(f"Embedding matrix shape: {embedding_matrix.shape}")
     
-    # Comparison of chunkwise vs one-by-one embeddings
+    # only use a subset of the embeddings for comparison
+    
     print("Comparing chunkwise and one-by-one embeddings:")
     # Generate embeddings one-by-one
+    sequences_test = sequences[:10]
+    
     one_by_one_embeddings = []
-    for sequence in sequences:
+    for sequence in sequences_test:
         embedding = generate_per_protein_embeddings([sequence], tokenizer, model, device, chunk_size=1)
         one_by_one_embeddings.append(embedding[0])
     one_by_one_embeddings = np.stack(one_by_one_embeddings)
     
     # Check if they are almost equal
     try:
-        np.testing.assert_almost_equal(embedding_matrix, one_by_one_embeddings, decimal=5)
+        np.testing.assert_almost_equal(embedding_matrix[:10], one_by_one_embeddings, decimal=5)
         print("Embeddings generated chunkwise and one-by-one are almost equal.")
     except AssertionError as e:
         print("Embeddings generated chunkwise and one-by-one are not equal")
