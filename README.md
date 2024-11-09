@@ -18,6 +18,6 @@ As large protein language models become increasingly powerful but computationall
 To clone this repository and include the submodules (e.g., MTDP and LoRAPrune), use the following command:
 
 ```bash
-git clone --recursive https://gitlab.lrz.de/ge56naf/prostt5-modelreduction.git
+git clone --recursive https://github.com/Hugenotte585/prostt5-modelreduction.git
 bash setup.sh
 ````
