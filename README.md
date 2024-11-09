@@ -1,7 +1,7 @@
 # ProstT5-ModelReduction
 
 This project aims to develop and implement model reduction techniques to enhance the efficiency of protein function prediction using the ProstT5 language model. 
-As large protein language models become increasingly powerful but computationally expensive, there is a growing need for methods that can maintain high accuracy while reducing model size and computational requirements. The project focuses on applying distillation, quantization, and pruning techniques, including the combination of Low-Rank Adaptation (LoRA) with pruning, to ProstT5. The reduced models will be evaluated on the FLIP benchmarks to assess their performance in protein function prediction tasks.
+As large protein language models become increasingly powerful but computationally expensive, there is a growing need for methods that can maintain high accuracy while reducing model size and computational requirements. The project focuses on applying **distillation, quantization, and pruning techniques**, including the combination of Low-Rank Adaptation (LoRA) with pruning, to ProstT5. The reduced models will be evaluated on the FLIP benchmarks to assess their performance in protein function prediction tasks.
 
 1. **Induction to existing literature** and familiarization with protein language models, particularly ProstT5.
 2. **Model reduction techniques**:
